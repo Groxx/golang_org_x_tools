@@ -79,6 +79,11 @@ func main() {
 // OK (facts and diagnostics on same line)
 func println(...interface{}) { println() } // want println:"found" "call of println(...)"
 
+/*
+Block comments behave weirdly with want comments.
+This assertion currently complains about an Ident after "odd" below // want "anything"
+odd error
+*/
 `,
 		"a/b.go.golden": `package main // want package:"found"
 
@@ -119,6 +124,12 @@ func main() {
 
 // OK (facts and diagnostics on same line)
 func println(...interface{}) { println_TEST_() } // want println:"found" "call of println(...)"
+
+/*
+Block comments behave weirdly with want comments.
+This assertion currently complains about an Ident after "odd" below // want "anything"
+odd error
+*/
 `,
 		"a/b_test.go": `package main
 
